@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শান্তি যোগ - Shanti Yoga Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@300;400;600&family=Hind+Siliguri:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #E6DDCB;
+            --sage: #8FA88E;
+            --off-white: #F9F7F2;
+            --terracotta: #CD8B6A;
+            --dusk-pink: #DCAEAE;
+            --text-dark: #4A4A40;
+            --paper-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjRjlGN0YyIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNFNkREQ0IiIG9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4=');
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', 'Nunito Sans', sans-serif;
+            background-color: var(--off-white);
+            background-image: var(--paper-texture);
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            color: var(--sage);
+        }
+
+        section {
+            padding: 6rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .breath-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--dusk-pink) 0%, var(--terracotta) 100%);
+            opacity: 0.6;
+            animation: breath 4s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes breath {
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background: var(--sage);
+            color: var(--off-white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.6s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--terracotta);
+        }
+
+        /* Fade-up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Practices Section */
+        .practices-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .practice-card {
+            background: rgba(255,255,255,0.5);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(143, 168, 142, 0.2);
+            transition: transform 0.6s ease;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Teacher Bios */
+        .teacher-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .teacher-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .teacher-img img {
+            width: 100%;
+            height: 100%;
+            transition: transform 10s ease;
+        }
+
+        .teacher-card:hover .teacher-img img {
+            transform: scale(1.2) rotate(2deg); /* Slow Ken Burns */
+        }
+
+        .quote-area {
+            min-height: 40px;
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        /* Schedule */
+        .schedule-row {
+            border-bottom: 1px solid var(--sand);
+            padding: 1.5rem 0;
+            cursor: pointer;
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seats {
+            font-size: 0.9rem;
+            color: var(--sage);
+            background: rgba(143, 168, 142, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+
+        .schedule-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+            padding-top: 0;
+        }
+
+        .schedule-row.active .schedule-details {
+            max-height: 200px;
+            padding-top: 1rem;
+        }
+
+        /* 100 Scripts Section */
+        .scripts-grid {
+            columns: 1;
+            column-gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .practices-grid { grid-template-columns: repeat(2, 1fr); }
+            .scripts-grid { columns: 2; }
+        }
+
+        .script-card {
+            background: linear-gradient(135deg, #fff 0%, #FDF8F5 100%);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--dusk-pink);
+            break-inside: avoid;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .script-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(205, 139, 106, 0.1);
+        }
+
+        .script-card::before {
+            content: '❝';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-size: 4rem;
+            color: rgba(220, 174, 174, 0.2);
+            font-family: serif;
+        }
+
+        .script-text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .script-meta {
+            font-size: 0.85rem;
+            color: var(--sage);
+            text-align: right;
+        }
+
+        /* Form */
+        .form-container {
+            background: var(--sand);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .form-container input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--sage);
+            border-radius: 4px;
+            background: var(--off-white);
+            font-family: inherit;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--sage);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Chime Opt-in */
+        .chime-optin {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--sage);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="breath-circle"></div>
+        <h1 class="fade-up">শান্তি যোগ</h1>
+        <p class="fade-up">উঁচু চাপের দুনিয়া থেকে দূরে, নিজের অভ্যন্তরে ফিরে আসার এক শান্ত আশ্রয়। এখানে শুরু হোক আপনার শ্বাসপ্রশ্বাসের যাত্রা।</p>
+        <a href="#booking" class="cta-btn fade-up">প্রথম ক্লাস ফ্রি বুক করুন</a>
+    </header>
+
+    <!-- Practices Section -->
+    <section id="practices">
+        <h2 class="fade-up">আমাদের সাধনা</h2>
+        <div class="practices-grid">
+            <div class="practice-card fade-up">
+                <h3>বিন্যাস (Vinyasa)</h3>
+                <p>শ্বাসের সাথে তাল মিলিয়ে গতিশীল প্রবাহ। শরীর ও মনের সঞ্চালন।</p>
+            </div>
+            <div class="practice-card fade-up">
+                <h3>যিন (Yin)</h3>
+                <p>গভীর টিস্যুতে কাজ করে এমন ধীরগতির ভঙ্গি, যা ধৈর্য ও স্থিরতা বাড়ায়।</p>
+            </div>
+            <div class="practice-card fade-up">
+                <h3>রেস্টোরেটিভ (Restorative)</h3>
+                <p>প্রপস ব্যবহার করে দীর্ঘস্থায়ী বিশ্রাম, যা স্নায়ুতন্ত্রকে শান্ত করে।</p>
+            </div>
+            <div class="practice-card fade-up">
+                <h3>প্রাণায়াম (Breathwork)</h3>
+                <p>জীবনীশক্তি নিয়ন্ত্রণের প্রাচীন কৌশল, যা মনকে কেন্দ্রীভূত করে।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Bios -->
+    <section id="teachers">
+        <h2 class="fade-up">আমাদের শিক্ষকমণি</h2>
+        <div class="teacher-card fade-up">
+            <div class="teacher-img"><img src="https://images.unsplash.com/photo-1593810451137-5dc55105dace?q=80&w=200&auto=format&fit=crop" alt="Teacher Anjali"></div>
+            <div>
+                <h3>অঞ্জলি ঘোষ</h3>
+                <div class="quote-area" id="quote-1">হোভার করে আমার কথা পড়ুন...</div>
+            </div>
+        </div>
+        <div class="teacher-card fade-up">
+            <div class="teacher-img"><img src="https://images.unsplash.com/photo-1548690312-e3b502d8c9c7?q=80&w=200&auto=format&fit=crop" alt="Teacher Rohan"></div>
+            <div>
+                <h3>রোহন দাস</h3>
+                <div class="quote-area" id="quote-2">হোভার করে আমার কথা পড়ুন...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Class Schedule -->
+    <section id="schedule">
+        <h2 class="fade-up">ক্লাস রুটিন</h2>
+        <div class="schedule-row fade-up" onclick="toggleSchedule(this)">
+            <div class="schedule-header">
+                <div><strong>সকাল ৭:০০</strong> - সানরাইজ ভিন্যাস</div>
+                <span class="seats">৩ আসন বাকি</span>
+            </div>
+            <div class="schedule-details">
+                <p><em>স্টুডিও রুম:</em> সানলাইট হল</p>
+                <p><em>পূর্বশর্ত:</em> বেসিক যোগব্যায়ামের ধারণা থাকা প্রয়োজন।</p>
+            </div>
+        </div>
+        <div class="schedule-row fade-up" onclick="toggleSchedule(this)">
+            <div class="schedule-header">
+                <div><strong>সন্ধ্যা ৬:৩০</strong> - মুনলাইট যিন</div>
+                <span class="seats">৫ আসন বাকি</span>
+            </div>
+            <div class="schedule-details">
+                <p><em>স্টুডিও রুম:</em> গার্ডেন রুম</p>
+                <p><em>পূর্বশর্ত:</em> সকলের জন্য উন্মুক্ত।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 100 Scripts Section -->
+    <section id="scripts-section">
+        <h2 class="fade-up">মনের কথা (হৃদয়ের আওয়াজ)</h2>
+        <p class="fade-up">সম্পর্ক, স্বপ্ন আর একসাথে চলার কিছু ছোট ছোট গল্প। স্ক্রল করে পড়ুন।</p>
+        <div class="scripts-grid" id="scripts-container">
+            <!-- JS will populate 100 scripts here -->
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking">
+        <div class="form-container fade-up">
+            <h2>আপনার প্রথম ক্লাসটি উপহার নিন</h2>
+            <p style="margin-bottom: 2rem;">নিচের ফর্মটি পূরণ করুন, আমরা আপনার সাথে যোগাযোগ করব।</p>
+            <form>
+                <input type="text" placeholder="আপনার নাম" required>
+                <input type="email" placeholder="ইমেইল ঠিকানা" required>
+                <button type="submit" class="cta-btn">যাত্রা শুরু করুন</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; ২০২৪ শান্তি যোগ স্টুডিও। শান্তি আপনার চোখের দৃষ্টিতে।</p>
+    </footer>
+
+    <!-- Scroll Chime Opt-in -->
+    <div class="chime-optin" id="chime-optin" onclick="playChime(true)">
+        শান্তির জন্য ক্লিক করুন 🔔
+    </div>
+
+    <script>
+        // --- 100 Scripts Data ---
+        // পরবর্তীতে আরও স্ক্রিপ্ট যোগ করতে এই অ্যারেতে নতুন স্ট্রিং যোগ করুন
+        const scripts = [
+            "এত রাত পর্যন্ত জেগে আছো... স্বপ্নগুলো যে অনেক বড়।",
+            "সব বোঝা কি একাই টানতে হবে? না তো, আমি তো আছি।",
+            "তুমি আছো বলেই তো পথ চলা এতো সহজ লাগে।",
+            "ক্লান্তি আসবেই, তবে থেমে যেও না।",
+            "তোমার হাসিটা আমার সবচেয়ে বড় শক্তি।",
+            "রাতের অন্ধকারে তোমার হাসিটাই আমার আলো।",
+            "একসাথে চললে, পথও মনে হয় ছোট।",
+            "কফির কাপে ধোঁয়া ওড়ে, আর আমার মনে হয় তুমি কাছে।",
+            "স্বপ্ন দেখা তোমার অভ্যাস, আর সেগুলো পূরণ করা আমার।",
+            "তোমার চোখের দৃষ্টি বলে দেয়, তুমি হার মানো না।",
+            "যত বড় ঝড়ই আসুক, আমরা যে একসাথে দাঁড়াব।",
+            "নিঃশব্দে পাশে দাঁড়ানোই আসল ভালোবাসা।",
+            "তোমার ক্লান্তি আমার কাঁধে রেখে দাও, তুমি একটু ঘুমিয়ে নাও।",
+            "কাজের চাপ অনেক, কিন্তু তুমি একা নও।",
+            "সফলতা তো আসবেই, তবে এখন শুধু সময় দরকার।",
+            "হাতে হাত রেখে চলি যদি একসাথে, সব বাধা পেরিয়ে যাবো।",
+            "তোমার সাফল্যের পেছনে আমার নীরব ঢল আছে।",
+            "ভোরের আলোয় তোমার মুখটা আরও সুন্দর লাগে।",
+            "বিরক্ত হওয়ার কিছু নেই, সব ঠিক হয়ে যাবে।",
+            "তুমি শুধু সামনে এগিয়ে যাও, পেছনে আমি আছি।",
+            "তোমার সাহস দেখে আমিও শক্তি পাই।",
+            "বুক ভরা আক্ষেপ আর স্বপ্ন, সব মিলে মিশে এক হয়ে যায়।",
+            "কষ্ট গুলো ভুলে যাও, শুধু মনে রাখো আমাকে।",
+            "নতুন করে শুরু করার সাহস তুমি পাবে, আমি দেব।",
+            "তোমার প্রতিটা জয় আমারও।",
+            "রাত যত গভীর হয়, ভোর ততই কাছে আসে।",
+            "এক কাপ চা আর তোমার সাথে গল্প, চাই শুধু এটুকু।",
+            "তুমি থাকলে সময় মনে হয় থমকে যায়।",
+            "অনেক কষ্ট করেছ, এবার একটু জিরিয়ে নাও।",
+            "ভালো থেকো, কারণ আমি তোমাকে নিয়ে স্বপ্ন দেখি।",
+            "তোমার পথ চলা কখনো একঘেয়ে হবে না, আমি তো আছি।",
+            "বৃষ্টির দিনে ছাতার বদলে তোমার কাঁধ কাম্য।",
+            "কষ্টের সময় শুধু আমার দিকে তাকাও।",
+            "আমাদের গল্পটা সিনেেমার মতো সুন্দর।",
+            "স্বপ্ন দেখা থামিও না, আমি পাশে আছি।",
+            "তোমার স্বপ্নগুলো আমারও স্বপ্ন।",
+            "ক্লান্ত হলে আমার কাছে এসো, শান্তি পাবে।",
+            "ভালোবাসা মানে শুধু বলা নয়, পাশে থাকা।",
+            "সারাদিনের ক্লান্তি মুছে দেয় তোমার একটা হাসি।",
+            "তুমি পারবে, আমি জানি।",
+            "সব কিছু ঠিক হয়ে যাবে, শুধু বিশ্বাস রাখো।",
+            "তোমার আগমনে আমার জীবনটা পূর্ণ হয়েছে।",
+            "একসাথে থাকলে সব কষ্ট সহজ মনে হয়।",
+            "কোনো পরিস্থিতিতেই হাল ছাড়বে না।",
+            "তোমার চোখের তারায় আমি আমার পৃথিবী খুঁজে পাই।",
+            "জীবন মানে শুধু বেঁচে থাকা নয়, তোমার মতো মানুষের সাথে চলা।",
+            "কষ্ট আসে যায়, কিন্তু আমাদের ভালোবাসা থাকবে।",
+            "তুমি আমার সবচেয়ে ভালো অধ্যায়।",
+            "শুধু মনে রেখো, তুমি একা নও।",
+            "তোমার সফলতার জন্য আমি সবসময় প্রস্তুত।",
+            "নীরবতা আমাদের কথা বলে।",
+            "তোমার সাথে কাটানো প্রতিটা মুহূর্ত স্মরণীয়।",
+            "অন্ধকারেও আলো খুঁজে পাই তোমার মুখে।",
+            "তোমার সাহসিকতা আমাকে অনুপ্রাণিত করে।",
+            "তুমি আমার অনুপ্রেরণা।",
+            "একসাথে স্বপ্ন দেখার আনন্দই আলাদা।",
+            "তোমার ক্লান্তি দূর করতে আমি সবসময় প্রস্তুত।",
+            "ভালোবাসা হলো পাশে থাকা, যখন সবাই চলে যায়।",
+            "তোমার হাত ধরে চলতে আমার ভালো লাগে।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার।",
+            "তোমার উপস্থিতিতে সব সমস্যা ছোট মনে হয়।",
+            "তুমি আমার শক্তির উৎস।",
+            "তোমার হাসি আমার দিনটি সুন্দর করে দেয়।",
+            "তোমার সাথে থাকতে পারলে আর কিছু লাগে না।",
+            "তুমি আমার জগতের সবচেয়ে সুন্দর রঙ।",
+            "তোমার কথা ভাবলেই মনে শান্তি পাই।",
+            "তুমি আমার জীবনের সবচেয়ে বড় সাফল্য।",
+            "তোমার সাথে কথা বললে সব কষ্ট দূর হয়ে যায়।",
+            "তুমি আমার স্বপ্নের সবচেয়ে সুন্দর অংশ।",
+            "তোমার উপস্থিতি আমার জীবনের সবচেয়ে বড় আশীর্বাদ।",
+            "তোমার সাথে থাকতে পারলে সময় থামতে ইচ্ছে করে।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর প্রতিফলন।",
+            "তোমার কাছে ফিরে আসাই আমার জীবনের সবচেয়ে বড় সাফল্য।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর সত্য।",
+            "তোমার সাথে কাটানো প্রতিটা মুহূর্ত আমার কাছে অমূল্য।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর গল্প।",
+            "তোমার উপস্থিতি আমার জীবনের সবচেয়ে বড় স্বস্তি।",
+            "তুমি আমার স্বপ্নের সবচেয়ে সুন্দর বাস্তবতা।",
+            "তোমার হাসিটা আমার জীবনের সবচেয়ে সুন্দর দৃশ্য।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর অধ্যায়।",
+            "তোমার কাছে থাকতে পারলে আর কিছু চাই না।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর অনুপ্রেরণা।",
+            "তোমার সাথে থাকতে পারলে সব সমস্যা সমাধান হয়ে যায়।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর প্রকাশ।",
+            "তোমার উপস্থিতি আমার জীবনের সবচেয়ে বড় আনন্দ।",
+            "তুমি আমার স্বপ্নের সবচেয়ে সুন্দর বাস্তবতা।",
+            "তোমার হাসিটা আমার জীবনের সবচেয়ে সুন্দর সঙ্গীত।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর কবিতা।",
+            "তোমার কাছে থাকতে পারলে আর কিছু ভাবতে হয় না।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার।",
+            "তোমার সাথে থাকতে পারলে সব কষ্ট মুছে যায়।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর প্রমাণ।",
+            "তোমার উপস্থিতি আমার জীবনের সবচেয়ে বড় সান্ত্বনা।",
+            "তুমি আমার স্বপ্নের সবচেয়ে সুন্দর রঙ।",
+            "তোমার হাসিটা আমার জীবনের সবচেয়ে সুন্দর আলো।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর অনুভূতি।",
+            "তোমার কাছে থাকতে পারলে আর কিছু দরকার হয় না।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর স্বপ্ন।",
+            "তোমার সাথে থাকতে পারলে সব ভয় দূর হয়ে যায়।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর যাত্রা।",
+            "তোমার উপস্থিতি আমার জীবনের সবচেয়ে বড় সম্পদ।",
+            "তুমি আমার স্বপ্নের সবচেয়ে সুন্দর পরিণতি।",
+            "তোমার হাসিটা আমার জীবনের সবচেয়ে সুন্দর ছবি।",
+            "তুমি আমার ভালোবাসার সবচেয়ে সুন্দর শুরু।",
+            "তোমার কাছে থাকতে পারলে আর কিছু চাওয়ার নেই।",
+            "তুমি আমার জীবনের সবচেয়ে সুন্দর সমাপ্তি।"
+        ];
+
+        // Render Scripts
+        const container = document.getElementById('scripts-container');
+        scripts.forEach((script, index) => {
+            const card = document.createElement('div');
+            card.className = 'script-card fade-up';
+            card.innerHTML = `
+                <p class="script-text">${script}</p>
+                <div class="script-meta">দৃশ্য ${index + 1}</div>
+            `;
+            container.appendChild(card);
+        });
+
+        // --- Intersection Observer for Fade-up ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // --- Schedule Toggle ---
+        function toggleSchedule(row) {
+            row.classList.toggle('active');
+        }
+
+        // --- Teacher Typing Quotes ---
+        const quotes = {
+            "quote-1": "যোগ আমার কাছে কোনো ব্যায়াম নয়, এটি আত্মার সাথে নিজের পরিচয় হওয়ার প্রক্রিয়া।",
+            "quote-2": "আমি শেখাই কারণ আমি বিশ্বাস করি, সবার ভেতরেই এক অসীম শান্তি লুকিয়ে আছে।"
+        };
+
+        function typeQuote(elementId, text) {
+            const el = document.getElementById(elementId);
+            el.textContent = "";
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 40);
+        }
+
+        document.querySelectorAll('.teacher-card').forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                const id = `quote-${index + 1}`;
+                typeQuote(id, quotes[id]);
+            });
+        });
+
+        // --- Scroll Chime (Web Audio API) ---
+        let chimePlayed = false;
+        window.addEventListener('scroll', () => {
+            if (!chimePlayed) {
+                const optIn = document.getElementById('chime-optin');
+                optIn.style.display = 'block';
+            }
+        }, { once: true });
+
+        function playChime(userConsented) {
+            if (userConsented && !chimePlayed) {
+                chimePlayed = true;
+                document.getElementById('chime-optin').style.display = 'none';
+                
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+
+                oscillator.type = 'sine'; // soft tone
+                oscillator.frequency.setValueAtTime(528, ctx.currentTime); // solfeggio frequency
+                
+                gainNode.gain.setValueAtTime(0, ctx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 0.01);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 1.5);
+            }
+        }
+    </script>
+</body>
+</html>
